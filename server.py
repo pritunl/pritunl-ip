@@ -6,8 +6,8 @@ import cherrypy.wsgiserver
 app = flask.Flask('pritunl_ip')
 
 @app.route('/', methods=['GET'])
-@app.route('/ip', methods=['GET'])
-def ip_get():
+@app.route('/json', methods=['GET'])
+def json_get():
     data = json.dumps({
         'ip': flask.request.headers.get('X-Forwarded-For').split(' ')[-1],
     })
