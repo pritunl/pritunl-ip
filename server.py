@@ -5,11 +5,18 @@ import cherrypy.wsgiserver
 
 app = flask.Flask('pritunl_ip')
 
+def get_remote_addr():
+    if 'X-Forwarded-For' in flask.request.headers:
+        return flask.request.headers.getlist('X-Forwarded-For')[0]
+    if 'X-Real-Ip' in flask.request.headers:
+        return flask.request.headers.getlist('X-Real-Ip')[0]
+    return flask.request.remote_addr
+
 @app.route('/', methods=['GET'])
 @app.route('/json', methods=['GET'])
 def json_get():
     data = json.dumps({
-        'ip': flask.request.headers.get('X-Forwarded-For').split(' ')[-1],
+        'ip': get_remote_addr(),
     })
     callback = flask.request.args.get('callback', False)
     if callback:
