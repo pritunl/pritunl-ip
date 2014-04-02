@@ -1,4 +1,4 @@
-Pritunl-IP
+pritunl-ip
 ==========
 
 Heroku app for pritunl used to provide public ip address.
