@@ -8,6 +8,12 @@ NOTIFICATIONS = {
     '1009': {
         'www': 'ok',
         'vpn': 'ok',
+        'message': 'Update available, please use your distributions ' +
+            'package management system to update to the latest version.',
+    },
+    '1010': {
+        'www': 'ok',
+        'vpn': 'ok',
         'message': '',
     },
 }
